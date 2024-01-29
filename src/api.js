@@ -8,13 +8,13 @@ const optionsAxios = {
   }
 }
 
-async function fetchMovies (){
-  return await axios.get('/movie/popular', optionsAxios);
+async function fetchMovies (page){
+  return await axios.get(`/movie/popular?page=${page}`, optionsAxios);
    
 };
 
-async function fetchMovieByWord(searchWord) {
-  return await axios.get(`/search/movie?query=${searchWord}`, optionsAxios)
+async function fetchMovieByWord(searchWord, page) {
+  return await axios.get(`/search/movie?query=${searchWord}&page=${page}`, optionsAxios)
 }
 
 async function fetchMovieDetails(movie_id) {

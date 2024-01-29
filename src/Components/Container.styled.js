@@ -8,5 +8,6 @@ export const Container = styled.div(() => {
         position: 'relative',
         top: 0,
         textAlign: 'center',
+        paddingBottom: '20px',
     })
 })
