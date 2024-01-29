@@ -1,7 +1,7 @@
 import { Container } from "../Components/Container.styled";
-import { MovieList } from "../Components/MovieList";
+import { MovieList } from "../Components/MovieList/MovieList";
 
-export const Home = () => {
+export function Home () {
 
     return (
         <Container>

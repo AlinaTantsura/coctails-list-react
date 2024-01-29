@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const ContainerImg = styled.div(() => {
     return ({
-        minWidth: '150px',
-        height: '250px',
+        minWidth: '200px',
+        maxWidth: '200px',
+        // width: '200px',
+        height: '300px',
         overflow: 'hidden',
         borderRadius: '5px',
         img: {
