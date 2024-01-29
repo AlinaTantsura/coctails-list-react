@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/coctails-list-react/static/css/main.e6c13ad2.css",
-    "main.js": "/coctails-list-react/static/js/main.de5ed3b8.js",
+    "main.css": "/coctails-list-react/static/css/main.5ce9b75f.css",
+    "main.js": "/coctails-list-react/static/js/main.65c6f01f.js",
     "index.html": "/coctails-list-react/index.html",
-    "main.e6c13ad2.css.map": "/coctails-list-react/static/css/main.e6c13ad2.css.map",
-    "main.de5ed3b8.js.map": "/coctails-list-react/static/js/main.de5ed3b8.js.map"
+    "main.5ce9b75f.css.map": "/coctails-list-react/static/css/main.5ce9b75f.css.map",
+    "main.65c6f01f.js.map": "/coctails-list-react/static/js/main.65c6f01f.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.de5ed3b8.js"
+    "static/css/main.5ce9b75f.css",
+    "static/js/main.65c6f01f.js"
   ]
 }
