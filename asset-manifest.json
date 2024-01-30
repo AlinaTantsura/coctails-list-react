@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/coctails-list-react/static/css/main.5ce9b75f.css",
-    "main.js": "/coctails-list-react/static/js/main.50f68895.js",
-    "index.html": "/coctails-list-react/index.html",
-    "main.5ce9b75f.css.map": "/coctails-list-react/static/css/main.5ce9b75f.css.map",
-    "main.50f68895.js.map": "/coctails-list-react/static/js/main.50f68895.js.map"
+    "main.css": "/movies_list-react/static/css/main.5ce9b75f.css",
+    "main.js": "/movies_list-react/static/js/main.8f685b02.js",
+    "index.html": "/movies_list-react/index.html",
+    "main.5ce9b75f.css.map": "/movies_list-react/static/css/main.5ce9b75f.css.map",
+    "main.8f685b02.js.map": "/movies_list-react/static/js/main.8f685b02.js.map"
   },
   "entrypoints": [
     "static/css/main.5ce9b75f.css",
-    "static/js/main.50f68895.js"
+    "static/js/main.8f685b02.js"
   ]
 }
