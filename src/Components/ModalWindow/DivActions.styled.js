@@ -3,8 +3,17 @@ import styled from "styled-components"
 export const DivActions = styled.div(() => {
     return ({
         width: '100%',
-        padding: '15px',
+        // padding: '15px',
         display: 'flex',
-        justifyContent: 'space-between',     
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '15px',
+        button: {
+            width: '100%',
+        },
+        'a:hover': {
+            color: 'blue',
+        }
     })
 })

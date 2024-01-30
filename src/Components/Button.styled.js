@@ -7,6 +7,7 @@ export const Button = styled.button(() => {
         border: 'none',
         borderRadius: '5px',
         fontWeight: '500',
+        cursor: 'pointer',
         '&:hover': {
             backgroundColor: 'blue',
             color: 'white',

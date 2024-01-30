@@ -20,7 +20,7 @@ export const FavoriteList = styled.ul(() => {
             overflow: 'hidden',
             display: 'flex',
             gap: '8px',
-            alignItems: 'center',
+            // alignItems: 'center',
             
           
         } 

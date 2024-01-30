@@ -5,6 +5,6 @@ export const ModalInfoContainer = styled.div(() => {
         display: 'flex',
         flexDirection: 'column',
         // justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
     })
 })

@@ -1,12 +1,14 @@
 import { Container } from "../Components/Container.styled"
 import { FavoriteMoviesList } from "../Components/FavoriteMoviesList/FavoriteMoviesList"
 
-export const FavoriteMovies = () => {
+const FavoriteMovies = () => {
     return (
         <Container>
-            <h1>Favorite movies</h1>
-            <FavoriteMoviesList/>
+            <h1>Here is the list of your favorite movies</h1>
+            <FavoriteMoviesList />
         </Container>
         
     )
-}
+};
+
+export default FavoriteMovies;

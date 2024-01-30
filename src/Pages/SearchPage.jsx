@@ -5,7 +5,7 @@ import { Button } from "../Components/Button.styled";
 import { FormStyled } from "../Components/Form/Form.styled";
 import { Notify } from "notiflix";
 
-export const SearchPage = () => {
+const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
     const handleSubmit = (e) => {
@@ -23,16 +23,18 @@ export const SearchPage = () => {
 
     return (
         <Container>
-            <h1>Find movie</h1>
+            <h1>Here you can search movies</h1>
             <FormStyled onSubmit={handleSubmit}>
-                <input type='text' name='search' placeholder="Enter search word"/>
+                <input type='text' name='search' placeholder="Enter search word" />
                 <Button type='submit'>Search</Button>
             </FormStyled>
-             {searchParams.get('query') && (
+            {searchParams.get('query') && (
                 <>
                     <MovieList searchWord={searchParams.get('query')} />
                 </>)}
         </Container>
         
     )
-}
+};
+
+export default SearchPage;

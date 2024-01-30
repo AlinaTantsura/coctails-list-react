@@ -11,22 +11,19 @@ export const FavoriteMoviesList = () => {
     const { removeMovieFromList } = useContext(ListContext);
     const defaultImg = 'https://img.freepik.com/free-vector/cinema-realistic-poster-with-illuminated-bucket-popcorn-drink-3d-glasses-reel-tickets-blue-background-with-tapes-vector-illustration_1284-77070.jpg';
 
-    console.log(movieList)
     return (
         (movieList && movieList.length !== 0) ?(<FavoriteList>
             {movieList.map(item => (<li key={item.id}>
-                <ContainerImg><img src={item.poster_path ? `https://image.tmdb.org/t/p/w500/${item.poster_path}` : defaultImg} alt={item.title || item.name} width={150} /></ContainerImg>
+                <ContainerImg><img src={item.poster_path ? `https://image.tmdb.org/t/p/w500/${item.poster_path}` : defaultImg} alt={item.title || item.name} width={150} />
+                    <DivActions>
+                        <Button type='button' onClick={() => removeMovieFromList(item.id)}>Remove from your list</Button>
+                        {item.homepage && (<a href={item.homepage} target='_blank' rel='noreferrer'>See more(homepage)</a>)}       
+                    </DivActions>
+                </ContainerImg>
                 <ModalInfoContainer>
                     <h2>{item.title || item.name}</h2>
-                    <h3>Overview</h3>
                         <p>{item.overview}</p>
-                    <DivActions>
-                            {item.homepage && (<a href={item.homepage} target='_blank' rel='noreferrer'>Netflix</a>)}
-                           <Button type='button' onClick={() => removeMovieFromList(item.id)}>Remove from your list</Button>
-                                
-                            
-                    </DivActions>
-                        </ModalInfoContainer>
+                </ModalInfoContainer>
             </li>))}
         </FavoriteList>)
             : (<>

@@ -1,7 +1,8 @@
 import { Container } from "../Components/Container.styled";
 import { MovieList } from "../Components/MovieList/MovieList";
 
-export function Home () {
+
+const Home = () => {
 
     return (
         <Container>
@@ -9,4 +10,6 @@ export function Home () {
             <MovieList />
         </Container>
     )
-}
+};
+
+export default Home;

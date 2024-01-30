@@ -19,10 +19,6 @@ export const MovieList = ({ searchWord = '' }) => {
     useEffect(() => {
         async function getMovies() {
             if (searchWord) {
-                // if (page === 1 && movies) {
-                //     setAllVisible(null)
-                // }
-                // if(page === 1 && !allVisible) setMovies(null)
                 if (page === 1 && !movies) {
                     try {
                         const resp = await fetchMovieByWord(searchWord, page);
@@ -30,22 +26,17 @@ export const MovieList = ({ searchWord = '' }) => {
                             setMovies(null);
                             setAllVisible(null);
                             Notify.failure("There are no movies( Try reload the page)))")
-                            return
+                            return;
                         }
-                        console.log(resp.data, "This ia 1 page")
                         setMovies(resp.data.results);
                         setAllVisible(resp.data.results);
                         setTotalPages(resp.data.total_pages);
-                    } catch (error) {
-                        Notify.failure('Something went wrong(( Try reload the page');
                     }
+                    catch (error) { }
                 }
-                else if(page!==1 && movies) {
+                 else if(page!==1 && movies) {
                     try {
                         const resp = await fetchMovieByWord(searchWord, page);
-                        // console.log(resp.data)
-                        // // setMovies(resp.data.results)
-                        setAllVisible(resp.data.results);
                         setAllVisible([...movies, ...resp.data.results]);
                     } catch (error) {
                         console.log(error.message);
@@ -53,31 +44,30 @@ export const MovieList = ({ searchWord = '' }) => {
                     
                 }
             }
+               
             else {
                 if (page === 1 && !movies) {
                     try {
-                        const resp = await fetchMovies(page);
-                        console.log(resp.data)
-                        setMovies(resp.data.results);
-                        setAllVisible(resp.data.results);
-                        setTotalPages(resp.data.total_pages);
+            const resp = await fetchMovies(page);
+            setMovies(resp.data.results);
+            setAllVisible(resp.data.results);
+            setTotalPages(resp.data.total_pages);
                         
-                    } catch (error) {
-                    Notify.failure('Something went wrong(( Try reload the page');
-                    }
-                }
-                else if(page!==1 && movies) {
-                    try {
-                        const resp = await fetchMovies(page);
-                        setAllVisible([...movies, ...resp.data.results]);
+        } catch (error) {
+            Notify.failure('Something went wrong(( Try reload the page');
+        }
+    }
+    else if (page !== 1 && movies) {
+        try {
+            const resp = await fetchMovies(page);
+            setAllVisible([...movies, ...resp.data.results]);
                         
-                    } catch (error) {
-                        console.log(error.message);
-                    }
+        } catch (error) {
+             Notify.failure('Something went wrong(( Try reload the page');
+        }
                     
-                }
+    }}
                 
-            }
         }
         getMovies();  
     }, [searchWord, page, movies])
@@ -96,7 +86,7 @@ export const MovieList = ({ searchWord = '' }) => {
                 {(page < totalPages) ? (<Button type="button" onClick={() => { setPage(page + 1); setMovies([...allVisible]) }}>See more...</Button>)
                 : Notify.info("There are all movies")}    
                 {(isOpen && movieId) && (<ModalMovieInfo onClose={() => setIsOpen(false)} movieId={movieId} />)}
-                <CircleArrow style={{ width: '75px',  height: '75px', fill: '#6A5ACD', borderColor: '#6A5ACD', backgroundColor: '#EFFD5F'}}></CircleArrow>
+                <CircleArrow style={{ width: '50px',  height: '50px', fill: '#6A5ACD', borderColor: '#6A5ACD', backgroundColor: '#EFFD5F'}}></CircleArrow>
             </>
         )
         
