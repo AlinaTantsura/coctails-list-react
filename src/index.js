@@ -9,7 +9,7 @@ import { ContextProvider } from './Components/Context/Context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='/coctails-list-react'>
+    <BrowserRouter basename='/movies_list-react'>
       <ContextProvider>
         <App />
       </ContextProvider>

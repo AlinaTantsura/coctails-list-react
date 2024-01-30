@@ -4,32 +4,49 @@ import { MoviesListStyled } from "./MovieList.styled";
 import { nanoid } from "nanoid";
 import { ModalMovieInfo } from "../ModalWindow/ModalMovieInfo";
 import { Button } from "../Button.styled";
+import {CircleArrow} from "react-scroll-up-button";
+import { Notify } from "notiflix";
 
 export const MovieList = ({ searchWord = '' }) => {
     const [movies, setMovies] = useState(null);
-    const [allVisible, setAllVisible] = useState([]);
+    const [allVisible, setAllVisible] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [movieId, setMovieId] = useState(null);
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const defaultImg = 'https://img.freepik.com/free-vector/cinema-realistic-poster-with-illuminated-bucket-popcorn-drink-3d-glasses-reel-tickets-blue-background-with-tapes-vector-illustration_1284-77070.jpg';
 
     useEffect(() => {
         async function getMovies() {
             if (searchWord) {
+                // if (page === 1 && movies) {
+                //     setAllVisible(null)
+                // }
+                // if(page === 1 && !allVisible) setMovies(null)
                 if (page === 1 && !movies) {
                     try {
                         const resp = await fetchMovieByWord(searchWord, page);
-                        setMovies(resp.data.results)
+                        if (resp.data.results.length === 0) {
+                            setMovies(null);
+                            setAllVisible(null);
+                            Notify.failure("There are no movies( Try reload the page)))")
+                            return
+                        }
+                        console.log(resp.data, "This ia 1 page")
+                        setMovies(resp.data.results);
+                        setAllVisible(resp.data.results);
+                        setTotalPages(resp.data.total_pages);
                     } catch (error) {
-                
+                        Notify.failure('Something went wrong(( Try reload the page');
                     }
                 }
-                else {
+                else if(page!==1 && movies) {
                     try {
                         const resp = await fetchMovieByWord(searchWord, page);
                         // console.log(resp.data)
                         // // setMovies(resp.data.results)
                         setAllVisible(resp.data.results);
+                        setAllVisible([...movies, ...resp.data.results]);
                     } catch (error) {
                         console.log(error.message);
                     }
@@ -42,17 +59,18 @@ export const MovieList = ({ searchWord = '' }) => {
                         const resp = await fetchMovies(page);
                         console.log(resp.data)
                         setMovies(resp.data.results);
+                        setAllVisible(resp.data.results);
+                        setTotalPages(resp.data.total_pages);
                         
-            } catch (error) {
-                console.log(error.message);
-            }
+                    } catch (error) {
+                    Notify.failure('Something went wrong(( Try reload the page');
+                    }
                 }
-                else {
+                else if(page!==1 && movies) {
                     try {
                         const resp = await fetchMovies(page);
-                        console.log(resp.data)
-                        // setMovies(resp.data.results)
-                        setAllVisible(resp.data.results);
+                        setAllVisible([...movies, ...resp.data.results]);
+                        
                     } catch (error) {
                         console.log(error.message);
                     }
@@ -65,18 +83,20 @@ export const MovieList = ({ searchWord = '' }) => {
     }, [searchWord, page, movies])
     
     return (
-        movies && (
+        allVisible && (
             <>
                
                 <MoviesListStyled>
-            {movies.map((item) => (
+            {allVisible.map((item) => (
                 <li key={nanoid()} id={item.id} onClick={() => { setIsOpen(true);  setMovieId(item.id)}}>
                     <div><img src={item.poster_path ? `https://image.tmdb.org/t/p/w500/${item.poster_path}` : defaultImg} alt={item.title || item.name} width={150} /></div>{item.title || item.name}
                 </li>
             ))}
                 </MoviesListStyled>
-                <Button type="button" onClick={() => {setPage(page + 1); setMovies([...movies, ...allVisible])}}>See more...</Button>
-            {(isOpen && movieId) && (<ModalMovieInfo onClose={()=> setIsOpen(false)} movieId={movieId} />)}
+                {(page < totalPages) ? (<Button type="button" onClick={() => { setPage(page + 1); setMovies([...allVisible]) }}>See more...</Button>)
+                : Notify.info("There are all movies")}    
+                {(isOpen && movieId) && (<ModalMovieInfo onClose={() => setIsOpen(false)} movieId={movieId} />)}
+                <CircleArrow style={{ width: '75px',  height: '75px', fill: '#6A5ACD', borderColor: '#6A5ACD', backgroundColor: '#EFFD5F'}}></CircleArrow>
             </>
         )
         
