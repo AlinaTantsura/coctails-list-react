@@ -20,4 +20,8 @@ async function fetchMovieByWord(searchWord, page) {
 async function fetchMovieDetails(movie_id) {
   return await axios.get(`movie/${movie_id}`, optionsAxios);
 }
-export { fetchMovies, fetchMovieByWord, fetchMovieDetails};
+
+async function fetchMovieCredits(movie_id) {
+  return await axios.get(`movie/${movie_id}/credits`, optionsAxios)
+}
+export { fetchMovies, fetchMovieByWord, fetchMovieDetails, fetchMovieCredits};

@@ -22,7 +22,9 @@ export const FavoriteMoviesList = () => {
                 </ContainerImg>
                 <ModalInfoContainer>
                     <h2>{item.title || item.name}</h2>
-                        <p>{item.overview}</p>
+                    <p>{item.overview}</p>
+                    <p><b>Average vote </b>{item.vote_average }</p>
+                    <p><b>Genres: </b> {item.genres?.map(item => item.name).toString() }</p>
                 </ModalInfoContainer>
             </li>))}
         </FavoriteList>)

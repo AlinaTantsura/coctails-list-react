@@ -48,23 +48,23 @@ export const MovieList = ({ searchWord = '' }) => {
             else {
                 if (page === 1 && !movies) {
                     try {
-            const resp = await fetchMovies(page);
-            setMovies(resp.data.results);
-            setAllVisible(resp.data.results);
-            setTotalPages(resp.data.total_pages);
+                        const resp = await fetchMovies(page);
+                        setMovies(resp.data.results);
+                        setAllVisible(resp.data.results);
+                        setTotalPages(resp.data.total_pages);
                         
-        } catch (error) {
-            Notify.failure('Something went wrong(( Try reload the page');
-        }
-    }
-    else if (page !== 1 && movies) {
-        try {
-            const resp = await fetchMovies(page);
-            setAllVisible([...movies, ...resp.data.results]);
+                    } catch (error) {
+                    Notify.failure('Something went wrong(( Try reload the page');
+                    }
+                }
+                else if (page !== 1 && movies) {
+                    try {
+                        const resp = await fetchMovies(page);
+                        setAllVisible([...movies, ...resp.data.results]);
                         
-        } catch (error) {
-             Notify.failure('Something went wrong(( Try reload the page');
-        }
+                    } catch (error) {
+                        Notify.failure('Something went wrong(( Try reload the page');
+                    }
                     
     }}
                 

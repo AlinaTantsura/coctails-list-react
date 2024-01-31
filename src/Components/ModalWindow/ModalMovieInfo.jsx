@@ -50,6 +50,8 @@ export const ModalMovieInfo = ({onClose, movieId }) => {
                     <ModalInfoContainer>
                         <h2>{movieInfo.title || movieInfo.name}</h2>
                         <p>{movieInfo.overview}</p>
+                        <p><b>Average vote </b>{movieInfo.vote_average }</p>
+                        <p><b>Genres: </b> {movieInfo.genres?.map(item => item.name).toString() }</p>
                     
                         </ModalInfoContainer>
                     

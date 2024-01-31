@@ -20,6 +20,7 @@ const SearchPage = () => {
         };
         form.reset();
     }
+ 
 
     return (
         <Container>
