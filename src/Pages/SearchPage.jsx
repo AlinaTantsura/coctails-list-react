@@ -1,6 +1,5 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MovieList } from "../Components/MovieList/MovieList";
-import { Container } from "../Components/Container.styled";
 import { Button } from "../Components/Button.styled";
 import { FormStyled } from "../Components/Form/Form.styled";
 import { Notify } from "notiflix";
@@ -23,7 +22,7 @@ const SearchPage = () => {
  
 
     return (
-        <Container>
+        <>
             <h1>Here you can search movies</h1>
             <FormStyled onSubmit={handleSubmit}>
                 <input type='text' name='search' placeholder="Enter search word" />
@@ -33,7 +32,7 @@ const SearchPage = () => {
                 <>
                     <MovieList searchWord={searchParams.get('query')} />
                 </>)}
-        </Container>
+        </>
         
     )
 };
